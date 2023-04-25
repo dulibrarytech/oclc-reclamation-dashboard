@@ -1,0 +1,13 @@
+# Systemd unit file for DU OCLC Reclamation Dashboard
+[Unit]
+Description=Starts up DU OCLC Reclamation Dashboard
+
+[Service]
+ExecStart=/home/appuser/oclc-reclamtion-dashboard/startup.sh
+ExecStop=/bin/kill -15 $MAINPID
+
+User=appuser
+Group=appuser
+
+[Install]
+WantedBy=multi-user.target

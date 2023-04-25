@@ -1,0 +1,57 @@
+Total Records:
+
+CREATE VIEW total_catalog_records AS
+SELECT COUNT(id) AS total_catalog_records
+FROM records
+
+
+Total SET Records:
+
+CREATE VIEW total_worldcat_set_records AS
+SELECT COUNT(id) AS total_worldcat_set_records
+FROM records
+WHERE is_complete = 1 AND is_worldcat_record_found = 1 AND is_set = 1 AND is_null = 0;
+
+
+Total UNSET Records
+
+CREATE VIEW total_worldcat_unset_records AS
+SELECT COUNT(id) AS total_worldcat_unset_records
+FROM records
+WHERE is_complete = 1 AND is_worldcat_record_found = 1 AND is_set = 0 AND is_null = 0;
+
+
+Total NULL Records
+
+CREATE VIEW total_catalog_null_records AS
+SELECT COUNT(id) AS total_catalog_null_records
+FROM records
+WHERE is_complete = 1 AND is_null = 1; 
+
+
+SET:
+
+CREATE VIEW worldcat_set_records AS
+SELECT id, mms_id, title, oclc_numbers, current_worldcat_oclc_number, worldcat_id, isbn, batch
+FROM records
+WHERE is_complete = 1 AND is_worldcat_record_found = 1 AND is_set = 1 AND is_null = 0;
+
+
+UNSET:
+
+CREATE VIEW worldcat_unset_records AS
+SELECT id, mms_id, title, oclc_numbers, current_worldcat_oclc_number, worldcat_id, isbn, batch
+FROM records
+WHERE is_complete = 1 AND is_worldcat_record_found = 1 AND is_set = 0 AND is_null = 0;
+
+NULL:
+
+CREATE VIEW null_catalog_records AS
+SELECT id, mms_id, title, batch
+FROM records
+WHERE is_complete = 1 AND is_null = 1;
+
+NOT FOUND IN WORLDCAT:
+
+SELECT * FROM records WHERE is_null = 0 AND is_worldcat_record_found = 0;
+UPDATE records SET is_locked = 0, is_complete = 0 WHERE is_null = 0 AND is_worldcat_record_found = 0;
