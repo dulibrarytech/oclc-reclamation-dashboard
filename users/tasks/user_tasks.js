@@ -35,7 +35,7 @@ const User_tasks = class {
      * Gets all users
      * @return Promise array - data/boolean - false
      */
-    get_users = () => {
+    get_users() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -62,7 +62,7 @@ const User_tasks = class {
      * @param id
      * @return Promise array - data/boolean - false
      */
-    get_user = function (id) {
+    get_user(id) {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -99,7 +99,7 @@ const User_tasks = class {
      * @param user
      * @return Promise object - data/boolean - false
      */
-    update_user = (id, user) => {
+    update_user(id, user) {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -143,7 +143,7 @@ const User_tasks = class {
      * @param username
      * @return Promise object - data/boolean - false
      */
-    check_username = (username) => {
+    check_username(username) {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -181,7 +181,7 @@ const User_tasks = class {
      * @param user
      * @return Promise int - data/boolean - false
      */
-    save_user = (user) => {
+    save_user(user) {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -210,7 +210,7 @@ const User_tasks = class {
      * @param id
      * @return Promise int - data/boolean - false
      */
-    delete_user = (id) => {
+    delete_user(id) {
 
         let promise = new Promise((resolve, reject) => {
 
