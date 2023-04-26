@@ -37,16 +37,13 @@
     </header>
     <!-- /#header -->
     <!-- Content -->
-    <div class="content">
+    <div class="content" style="min-height: 750px">
         <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-2 col-md-6"> <!-- col-lg-3 col-md-6 -->
+            <div class="row" id="stats" style="visibility: hidden">
+                <div class="col-lg-2 col-md-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-one">
-                                <!--
-                                <div class="stat-icon dib"><i class="ti-server text-primary"></i></div>
-                                -->
                                 <div class="stat-content dib">
                                     <div class="stat-text"><i class="ti-server text-primary"></i>&nbsp;&nbsp;Total Records</div>
                                     <div class="total-cataloged-records">Loading...</div>
@@ -59,9 +56,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-one">
-                                <!--
-                                <div class="stat-icon dib"><i class="fa fa-square-o"></i></div>
-                                -->
                                 <div class="stat-content dib">
                                     <div class="stat-text"><i class="fa fa-square-o"></i>&nbsp;&nbsp;Unset Records</div>
                                     <div class="total-unset-records">Loading...</div>
@@ -74,9 +68,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-one">
-                                <!--
-                                <div class="stat-icon dib"><i class="fa fa-square"></i></div>
-                                -->
                                 <div class="stat-content dib">
                                     <div class="stat-text"><i class="fa fa-square"></i>&nbsp;&nbsp;Set Records</div>
                                     <div class="total-set-records">Loading...</div>
@@ -89,9 +80,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-one">
-                                <!--
-                                <div class="stat-icon dib"><i class="fa fa-circle-o"></i></div>
-                                -->
                                 <div class="stat-content dib">
                                     <div class="stat-text"><i class="fa fa-circle-o"></i>&nbsp;&nbsp;No OCLC Numbers</div>
                                     <div class="total-null-records">Loading...</div>
@@ -104,9 +92,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="stat-widget-one">
-                                <!--
-                                <div class="stat-icon dib"><i class="fa fa-circle-o"></i></div>
-                                -->
                                 <div class="stat-content dib">
                                     <div class="stat-text"><i class="fa fa-ban"></i>&nbsp;&nbsp;Not found in WorldCat</div>
                                     <div class="total-notfound-records">Loading...</div>
@@ -116,11 +101,8 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div>
-
-            <div class="row"><div id="message"></div></div>
-
-            <div class="row" id="reclamation-data">
+            <div id="message"></div>
+            <div class="row" id="reclamation-data" style="visibility: hidden">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -132,6 +114,7 @@
                     </div>
                 </div>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <!-- /.content -->

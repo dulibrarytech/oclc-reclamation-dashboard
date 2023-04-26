@@ -31,11 +31,18 @@ const homeModule = (function () {
         history.replaceState({}, '', '/dashboard/home');
         history.pushState({}, '', '/dashboard/home');
 
+        domModule.html('#message', '<div class="alert alert-info">Loading Dashboard...</div>');
+
         setTimeout(() => {
-            console.log('OCLC Reclamation Dashboard');
             dashboardModule.get_stats();
             dashboardModule.get_unset_records();
         }, 1000);
+
+        setTimeout(() => {
+            document.querySelector('#stats').style.visibility = 'visible';
+            document.querySelector('#reclamation-data').style.visibility = 'visible';
+            domModule.html('#message', '');
+        }, 2000);
     };
 
     return obj;
