@@ -35,7 +35,7 @@ const homeModule = (function () {
             console.log('OCLC Reclamation Dashboard');
             dashboardModule.get_stats();
             dashboardModule.get_unset_records();
-        }, 500);
+        }, 1000);
     };
 
     return obj;
