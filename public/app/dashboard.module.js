@@ -21,7 +21,6 @@ const dashboardModule = (function () {
     'use strict';
 
     const api = configModule.getApi();
-    const endpoints = endpointsModule.get_application_endpoints();
     const data_table = '#data-table';
     const card_title = '.card-title';
     let obj = {};
@@ -31,6 +30,7 @@ const dashboardModule = (function () {
      */
     obj.get_stats = () => {
 
+        const endpoints = endpointsModule.get_application_endpoints();
         let stats = [];
         let token = authModule.getUserToken();
 
@@ -90,6 +90,8 @@ const dashboardModule = (function () {
      */
     obj.get_unset_records = () => {
 
+        const endpoints = endpointsModule.get_application_endpoints();
+
         if ($.fn.dataTable.isDataTable(data_table)) {
             $(data_table).DataTable().clear().destroy();
         }
@@ -145,6 +147,8 @@ const dashboardModule = (function () {
      */
     obj.get_set_records = () => {
 
+        const endpoints = endpointsModule.get_application_endpoints();
+
         if ($.fn.dataTable.isDataTable(data_table)) {
             $(data_table).DataTable().clear().destroy();
         }
@@ -183,6 +187,8 @@ const dashboardModule = (function () {
      * Gets records that do contain OCLC numbers or ISBNs
      */
     obj.get_null_records = () => {
+
+        const endpoints = endpointsModule.get_application_endpoints();
 
         if ($.fn.dataTable.isDataTable(data_table)) {
             $(data_table).DataTable().clear().destroy();
@@ -229,6 +235,8 @@ const dashboardModule = (function () {
     };
 
     obj.get_not_found_records = () => {
+
+        const endpoints = endpointsModule.get_application_endpoints();
 
         if ($.fn.dataTable.isDataTable(data_table)) {
             $(data_table).DataTable().clear().destroy();
