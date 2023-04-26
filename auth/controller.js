@@ -18,6 +18,7 @@
 
 'use strict';
 
+const APP_CONFIG = require('../config/app_config')();
 const CONFIG = require('../config/webservices_config')();
 const TOKEN = require('../libs/tokens');
 const MODEL = require('../auth/model');
@@ -54,5 +55,14 @@ exports.get_auth_user_data = (req, res) => {
     const ID = req.query.id;
     MODEL.get_auth_user_data(ID, (data) => {
         res.status(data.status).send(data.data);
+    });
+};
+
+exports.get_dashboard_landing_page = (req, res) => {
+    res.render('dashboard-landing', {
+        host: APP_CONFIG.host,
+        appname: APP_CONFIG.app_name,
+        appversion: APP_CONFIG.app_version,
+        organization: APP_CONFIG.organization
     });
 };

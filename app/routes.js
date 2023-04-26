@@ -18,9 +18,9 @@
 
 'use strict';
 
-const CONTROLLER = require('./controller'),
-    ENDPOINTS = require('./endpoints'),
-    TOKEN = require('../libs/tokens');
+const CONTROLLER = require('./controller');
+const ENDPOINTS = require('./endpoints');
+const TOKEN = require('../libs/tokens');
 
 module.exports = (app) => {
 

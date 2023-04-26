@@ -1,0 +1,64 @@
+<%- include('partials/header.ejs'); %>
+<body>
+<!-- Left Panel -->
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>
+<!-- /#left-panel -->
+<!-- Right Panel -->
+<div id="right-panel" class="right-panel">
+    <!-- Header-->
+    <header id="header" class="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://library.du.edu" target="_blank"><img src="../images/du-logo.png" alt="Logo"></a>
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="user-area dropdown float-right"></div>
+            </div>
+        </div>
+    </header>
+    <!-- /#header -->
+    <!-- Content -->
+    <div class="content" style="min-height: 750px">
+        <div class="animated fadeIn">
+            <div id="message"></div>
+            <div class="row" id="reclamation-data">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">OCLC Reclamation Project Dashboard</strong>
+                        </div>
+                        <div class="card-body">
+                            <p><a href="/login" class="btn btn-primary">Authenticate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- /.content -->
+    <div class="clearfix"></div>
+    <!-- Footer -->
+    <%- include('partials/footer.ejs'); %>
+    <!-- /.site-footer -->
+</div>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="../assets/js/theme.js"></script>
+<script>
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+</script>
+</body>
+</html>

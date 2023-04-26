@@ -32,7 +32,7 @@ Create "logs" folder in web root
 Create "oclc_reclamation" Database
 Import mysql schemas "oclc_reclamation" to db, schema found in db folder.  Change extensions from .txt to .sql
 run "node oclc_reclamation_dashboard.js"
-http://localhost:8003/login
+http://localhost:8003/dashboard
 ```
 
 ### Maintainers
