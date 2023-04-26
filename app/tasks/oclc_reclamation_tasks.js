@@ -37,7 +37,7 @@ const Oclc_reclamation_tasks = class {
      * Gets records that are flagged as unset in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_unset_records = () => {
+    get_unset_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -64,7 +64,7 @@ const Oclc_reclamation_tasks = class {
      * Gets records that are flagged as set in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_set_records = () => {
+    get_set_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -91,7 +91,7 @@ const Oclc_reclamation_tasks = class {
      * Gets records that don't have an OCLC number
      * @return Promise array - data/boolean - false
      */
-    get_null_records = () => {
+    get_null_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -118,7 +118,7 @@ const Oclc_reclamation_tasks = class {
      * Gets records that contain OCLC numbers that are in the catalog but not found in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_not_found_records = () => {
+    get_not_found_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -149,7 +149,7 @@ const Oclc_reclamation_tasks = class {
      * Gets total number of catalog records
      * @return Promise array - data/boolean - false
      */
-    get_total_catalog_records = () => {
+    get_total_catalog_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -176,7 +176,7 @@ const Oclc_reclamation_tasks = class {
      * Gets total number of records that are flagged as set in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_total_set_records = () => {
+    get_total_set_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -203,7 +203,7 @@ const Oclc_reclamation_tasks = class {
      * Gets total number of records that are flagged as unset in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_total_unset_records = () => {
+    get_total_unset_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -216,7 +216,6 @@ const Oclc_reclamation_tasks = class {
                 LOGGER.module().error('ERROR: [/app/oclc_reclamation_tasks (get_total_unset_records)] unable to get records ' + error.message);
                 reject(false);
             });
-
         });
 
         return promise.then((result) => {
@@ -230,7 +229,7 @@ const Oclc_reclamation_tasks = class {
      * Gets total records containing OCLC numbers that are in the catalog but not found in WorldCat
      * @return Promise array - data/boolean - false
      */
-    get_total_not_found_records = () => {
+    get_total_not_found_records() {
 
         let promise = new Promise((resolve, reject) => {
 
@@ -261,7 +260,7 @@ const Oclc_reclamation_tasks = class {
      * Gets total records that do not have an OCLC number
      * @return Promise array - data/boolean - false
      */
-    get_total_null_records = () => {
+    get_total_null_records() {
 
         let promise = new Promise((resolve, reject) => {
 
