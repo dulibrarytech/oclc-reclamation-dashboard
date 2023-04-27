@@ -125,14 +125,14 @@ const dashboardModule = (function () {
             dom: 'lBfrtip',
             buttons: [
                 {
-                    extend: 'excelHtml5',
-                    text: 'Export to Excel',
+                    extend: 'csvHtml5',
+                    text: 'Export to CSV',
                     title: '',
                     filename: `oclc_reclamation_unset_export_${Date.now()}`,
                     action: function (e, dt, button, config) {
                         domModule.html('#message', '<div class="alert alert-info">Exporting data...</div>');
                         setTimeout(function () {
-                            $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, button, config);
+                            $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config);
                             domModule.html('#message', '');
                         }, 500);
                     },
@@ -217,14 +217,14 @@ const dashboardModule = (function () {
             dom: 'lBfrtip',
             buttons: [
                 {
-                    extend: 'excelHtml5',
-                    text: 'Export to Excel',
+                    extend: 'csvHtml5',
+                    text: 'Export to CSV',
                     title: '',
                     filename: `oclc_reclamation_no_oclc_numbers_export_${Date.now()}`,
                     action: function (e, dt, button, config) {
                         domModule.html('#message', '<div class="alert alert-info">Exporting data...</div>');
                         setTimeout(function () {
-                            $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, button, config);
+                            $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config);
                             domModule.html('#message', '');
                         }, 500);
                     },
@@ -269,14 +269,14 @@ const dashboardModule = (function () {
             dom: 'lBfrtip',
             buttons: [
                 {
-                    extend: 'excelHtml5',
-                    text: 'Export to Excel',
+                    extend: 'csvHtml5',
+                    text: 'Export to CSV',
                     title: '',
                     filename: `oclc_reclamation_not_found_export_${Date.now()}`,
                     action: function (e, dt, button, config) {
                         domModule.html('#message', '<div class="alert alert-info">Exporting data...</div>');
                         setTimeout(function () {
-                            $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, button, config);
+                            $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config);
                             domModule.html('#message', '');
                         }, 500);
                     },

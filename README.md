@@ -24,6 +24,7 @@ All other content is released under [CC-BY-4.0](https://creativecommons.org/lice
 ### Local Environment Setup
 
 ```
+Have Node.js v10
 Have MySql 5.5 - 5.7
 cd into oclc-reclamation-dashboard
 npm install
