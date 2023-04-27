@@ -25,6 +25,7 @@ const BODYPARSER = require('body-parser');
 const METHODOVERRIDE = require('method-override');
 const HELMET = require('helmet');
 const XSS = require('../libs/dom');
+const CACHE = require('../libs/cache');
 
 module.exports = () => {
 
@@ -54,6 +55,7 @@ module.exports = () => {
     require('../app/routes.js')(APP);
     require('../users/routes.js')(APP);
 
+    CACHE.clear_cache();
     SERVER.listen(process.env.APP_PORT);
 
     return APP;

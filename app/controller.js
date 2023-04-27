@@ -18,58 +18,131 @@
 
 'use strict';
 
+const CACHE = require('../libs/cache');
 const MODEL = require('../app/model');
 
 exports.get_unset_records = (req, res) => {
-    MODEL.get_unset_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_unset_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_set_records = (req, res) => {
-    MODEL.get_set_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_set_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_null_records = (req, res) => {
-    MODEL.get_null_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_null_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_not_found_records = (req, res) => {
-    MODEL.get_not_found_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_not_found_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_total_catalog_records = (req, res) => {
-    MODEL.get_total_catalog_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_total_catalog_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_total_set_records = (req, res) => {
-    MODEL.get_total_set_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_total_set_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_total_unset_records = (req, res) => {
-    MODEL.get_total_unset_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_total_unset_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_total_null_records = (req, res) => {
-    MODEL.get_total_null_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_total_null_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
 
 exports.get_total_not_found_records = (req, res) => {
-    MODEL.get_total_not_found_records((data) => {
-        res.status(data.status).send(data.data);
-    });
+
+    let cache = CACHE.get_cache(req);
+
+    if (cache) {
+        res.send(cache);
+    } else {
+        MODEL.get_total_not_found_records((data) => {
+            CACHE.cache_request(req, data.data);
+            res.status(data.status).send(data.data);
+        });
+    }
 };
