@@ -44,7 +44,8 @@ module.exports = () => {
     APP.use(BODYPARSER.json());
     APP.use(METHODOVERRIDE());
     APP.use(HELMET());
-    APP.use(EXPRESS.static('./public'));
+    APP.use('/oclc/static', EXPRESS.static('./public'));
+    // APP.use(EXPRESS.static('./public'));
     APP.use(XSS.sanitize_req_query);
     APP.use(XSS.sanitize_req_body);
     APP.set('views', './views');

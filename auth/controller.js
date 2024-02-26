@@ -25,6 +25,7 @@ const MODEL = require('../auth/model');
 
 exports.sso = (req, res) => {
 
+    const APP_PATH = '/oclc';
     const SSO_HOST = req.body.HTTP_HOST;
     const USERNAME = req.body.employeeID;
 
@@ -36,7 +37,7 @@ exports.sso = (req, res) => {
         MODEL.check_auth_user(USERNAME, (result) => {
 
             if (result.auth === true) {
-                res.redirect('/dashboard/home?t=' + token + '&id=' + result.data);
+                res.redirect(APP_PATH + '/dashboard/home?t=' + token + '&id=' + result.data);
             } else {
                 res.status(403).send({
                     message: 'You do not have access to this resource.'

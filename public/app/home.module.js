@@ -20,6 +20,7 @@ const homeModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     let obj = {};
 
     obj.init = () => {
@@ -28,8 +29,8 @@ const homeModule = (function () {
             authModule.getAuthUserData();
         }
 
-        history.replaceState({}, '', '/dashboard/home');
-        history.pushState({}, '', '/dashboard/home');
+        history.replaceState({}, '', APP_PATH + '/dashboard/home');
+        history.pushState({}, '', APP_PATH + '/dashboard/home');
 
         domModule.html('#message', '<div class="alert alert-info">Loading Dashboard...</div>');
 

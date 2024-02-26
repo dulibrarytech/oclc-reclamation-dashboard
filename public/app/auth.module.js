@@ -20,6 +20,7 @@ const authModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     const api = configModule.getApi();
     const init_endpoints = endpointsModule.init();
     let obj = {};
@@ -35,11 +36,11 @@ const authModule = (function () {
         if (data !== null && data.token === null) {
 
             setTimeout(function () {
-                window.location.replace('/login');
+                window.location.replace(APP_PATH + '/login');
             }, 0);
 
         } else if (data === null) {
-            window.location.replace('/login');
+            window.location.replace(APP_PATH + '/login');
         } else {
             return DOMPurify.sanitize(data.token);
         }
@@ -75,12 +76,12 @@ const authModule = (function () {
                     helperModule.renderError('Error: (HTTP status ' + response.status + '). Your session has expired.  You will be redirected to the login page momentarily.');
 
                     setTimeout(function () {
-                        window.location.replace('/login');
+                        window.location.replace(APP_PATH + '/login');
                     }, 3000);
 
                 } else {
                     helperModule.renderError('Error: (HTTP status ' + response.status + '). Unable to retrieve user profile.');
-                    window.location.replace('/login');
+                    window.location.replace(APP_PATH + '/login');
                 }
 
             })();
@@ -89,7 +90,6 @@ const authModule = (function () {
 
     /**
      * Checks if user data is in session storage
-     * @returns {boolean}
      */
     obj.checkUserAuthData = () => {
         let data = window.sessionStorage.getItem('oclc_reclamation_user');
@@ -106,7 +106,7 @@ const authModule = (function () {
      * @param data
      */
     obj.saveUserAuthData = (data) => {
-
+        console.log('user data ', data);
         let user = {
             uid: DOMPurify.sanitize(data.user_data.data[0].id),
             name: DOMPurify.sanitize(data.user_data.data[0].first_name) + ' ' + DOMPurify.sanitize(data.user_data.data[0].last_name)

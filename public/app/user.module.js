@@ -20,6 +20,7 @@ const userModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     const api = configModule.getApi();
     const endpoints = endpointsModule.get_users_endpoints();
     const users_table = '#users-data-table';
@@ -63,7 +64,7 @@ const userModule = (function () {
 
             users += '<td>';
             users += '&nbsp;';
-            users += '<a class="btn btn-xs btn-default" href="/dashboard/edit-user?id=' + DOMPurify.sanitize(user.id) + '" title="Edit User"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;';
+            users += '<a class="btn btn-xs btn-default" href="' + APP_PATH + '/dashboard/edit-user?id=' + DOMPurify.sanitize(user.id) + '" title="Edit User"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;';
             users += '</td>';
             users += '</tr>';
         }
@@ -127,9 +128,9 @@ const userModule = (function () {
             if (response.status === 200) {
                 renderUsers(response.data);
             } else if (response.status === 401) {
-                window.location.replace('/login');
+                window.location.replace(APP_PATH + '/login');
             } else {
-                window.location.replace('/dashboard/error?e=' + DOMPurify.sanitize(response.status));
+                window.location.replace(APP_PATH + '/dashboard/error?e=' + DOMPurify.sanitize(response.status));
             }
 
         })();
@@ -155,9 +156,9 @@ const userModule = (function () {
             if (response.status === 200) {
                 renderUserDetails(response.data);
             } else if (response.status === 401) {
-                window.location.replace('/login');
+                window.location.replace(APP_PATH + '/login');
             } else {
-                window.location.replace('/dashboard/error?e=' + DOMPurify.sanitize(response.status));
+                window.location.replace(APP_PATH + '/dashboard/error?e=' + DOMPurify.sanitize(response.status));
             }
 
         })();
@@ -241,15 +242,15 @@ const userModule = (function () {
                 domModule.html('#message', '<div class="alert alert-success">User added.</div>');
 
                 setTimeout(() => {
-                    window.location.replace('/dashboard/users');
+                    window.location.replace(APP_PATH + '/dashboard/users');
                 }, 3000);
 
             } else if (response.status === 401) {
-                window.location.replace('/login');
+                window.location.replace(APP_PATH + '/login');
             } else if (response.status === 400) {
                 console.log(response);
             } else {
-                window.location.replace('/dashboard/error?e=' + DOMPurify.sanitize(response.status));
+                window.location.replace(APP_PATH + '/dashboard/error?e=' + DOMPurify.sanitize(response.status));
             }
 
         })();
@@ -299,13 +300,13 @@ const userModule = (function () {
                 domModule.html('#message', '<div class="alert alert-success">User updated.</div>');
 
                 setTimeout(() => {
-                    window.location.replace('/dashboard/users');
+                    window.location.replace(APP_PATH + '/dashboard/users');
                 }, 3000);
 
             } else if (response.status === 401) {
                 window.location.replace('/login');
             } else {
-                window.location.replace('/dashboard/error?e=' + DOMPurify.sanitize(response.status));
+                window.location.replace(APP_PATH + '/dashboard/error?e=' + DOMPurify.sanitize(response.status));
             }
 
         })();
@@ -339,7 +340,7 @@ const userModule = (function () {
                 domModule.html('#message', '<div class="alert alert-success">User deleted</div>');
                 setTimeout(function () {
                     domModule.html('#message', null);
-                    window.location.replace('/dashboard/users');
+                    window.location.replace(APP_PATH + '/dashboard/users');
                 }, 3000);
 
                 return false;
@@ -351,7 +352,7 @@ const userModule = (function () {
                     helperModule.renderError('Error: (HTTP status ' + response.status + '). Your session has expired.  You will be redirected to the login page momentarily.');
 
                     setTimeout(function () {
-                        window.location.replace('/login');
+                        window.location.replace(APP_PATH + '/login');
                     }, 3000);
                 });
 

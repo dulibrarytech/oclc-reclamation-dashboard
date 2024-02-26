@@ -21,10 +21,11 @@
 const CONTROLLER = require('../auth/controller');
 const ENDPOINTS = require('../auth/endpoints');
 const TOKENS = require('../libs/tokens');
+const APP_PATH = '/oclc';
 
 module.exports = function (app) {
 
-    app.route('/dashboard')
+    app.route(APP_PATH + '/dashboard')
     .get(CONTROLLER.get_dashboard_landing_page);
 
     app.route(ENDPOINTS().auth.login.endpoint)

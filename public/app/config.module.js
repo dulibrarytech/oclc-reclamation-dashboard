@@ -28,7 +28,7 @@ const configModule = (function () {
      */
     obj.getApi = () => {
 
-        let api = 'http://localhost:8003';
+        let api = 'http://localhost';
 
         if (document.domain !== 'localhost') {
             api = location.protocol + '//' + document.domain + ':' + location.port;

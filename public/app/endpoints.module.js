@@ -20,9 +20,11 @@ const endpointsModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     let obj = {};
 
     obj.save_oclc_reclamation_endpoints = (data) => {
+        console.log(data);
         window.localStorage.setItem('oclc_reclamation_endpoints_users', JSON.stringify(data.endpoints.users));
         window.localStorage.setItem('oclc_reclamation_endpoints_app', JSON.stringify(data.endpoints.app));
     };
@@ -39,7 +41,7 @@ const endpointsModule = (function () {
 
     obj.init = () => {
         return {
-            authenticate: '/api/v1/authenticate'
+            authenticate: APP_PATH + '/api/v1/authenticate'
         }
     };
 

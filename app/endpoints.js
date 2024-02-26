@@ -18,7 +18,8 @@
 
 'use strict';
 
-const PREFIX = '/api/';
+const APP_PATH = '/oclc';
+const PREFIX = APP_PATH + '/api/';
 const VERSION = 'v1';
 const ENDPOINT = '/oclc-reclamation';
 const ENDPOINTS = {

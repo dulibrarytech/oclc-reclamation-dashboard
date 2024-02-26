@@ -18,25 +18,29 @@
 
 'use strict';
 
+const APP_PATH = '/oclc';
 const CONTROLLER = require('../dashboard/controller');
 
 module.exports = (app) => {
 
-    app.route('/dashboard/home')
+    app.route(APP_PATH)
+    .get(CONTROLLER.get_dashboard);
+
+    app.route(APP_PATH + '/dashboard/home')
         .get(CONTROLLER.get_dashboard_home);
 
-    app.route('/dashboard/users')
+    app.route(APP_PATH + '/dashboard/users')
         .get(CONTROLLER.get_dashboard_users);
 
-    app.route('/dashboard/add-user')
+    app.route(APP_PATH + '/dashboard/add-user')
     .get(CONTROLLER.get_dashboard_user_add_form);
 
-    app.route('/dashboard/edit-user')
+    app.route(APP_PATH + '/dashboard/edit-user')
         .get(CONTROLLER.get_dashboard_user_edit_form);
 
-    app.route('/dashboard/delete-user')
+    app.route(APP_PATH + '/dashboard/delete-user')
         .get(CONTROLLER.get_dashboard_user_delete_form);
 
-    app.route('/dashboard/error')
+    app.route(APP_PATH + '/dashboard/error')
     .get(CONTROLLER.get_dashboard_error);
 };

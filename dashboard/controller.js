@@ -18,7 +18,12 @@
 
 'use strict';
 
+const APP_PATH = '/oclc';
 const CONFIG = require('../config/app_config')();
+
+exports.get_dashboard = function (req, res) {
+    res.redirect(APP_PATH + '/dashboard/home');
+};
 
 exports.get_dashboard_home = (req, res) => {
     res.render('dashboard-home', {
