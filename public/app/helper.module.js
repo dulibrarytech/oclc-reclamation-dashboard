@@ -20,17 +20,18 @@ const helperModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     let obj = {};
 
     /**
      * Renders error message
      */
-    obj.renderError = () => {
+    obj.renderError = function () {
         let error = helperModule.getParameterByName('e');
-        let auth_url = configModule.getApi() + '/login';
+        let auth_url = configModule.getApi() + APP_PATH + '/login';
         domModule.html('#message', `<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ERROR: ${DOMPurify.sanitize(error)} - <a href="${auth_url}">reauthenticate</a></div>`);
-        history.replaceState({}, '', '/dashboard/error');
-        history.pushState({}, '', '/dashboard/error');
+        history.replaceState({}, '', APP_PATH + '/dashboard/error');
+        history.pushState({}, '', APP_PATH + '/dashboard/error');
     };
 
     /**

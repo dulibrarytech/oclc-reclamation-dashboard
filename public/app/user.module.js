@@ -30,7 +30,7 @@ const userModule = (function () {
      * Renders user profile data
      * @param data
      */
-    const renderUsers = (data) => {
+    const renderUsers = function (data) {
 
         let users = '';
         let user;
@@ -85,7 +85,7 @@ const userModule = (function () {
      * Renders user profile data for edit form
      * @param data
      */
-    const renderUserDetails = (data) => {
+    const renderUserDetails = function (data) {
 
         let user;
 
@@ -112,7 +112,7 @@ const userModule = (function () {
     /**
      * Gets all users
      */
-    obj.getUsers = () => {
+    obj.getUsers = function () {
 
         (async () => {
 
@@ -139,7 +139,7 @@ const userModule = (function () {
     /**
      * Retrieves user profile data for edit form
      */
-    obj.getUserDetails = () => {
+    obj.getUserDetails = function () {
 
         (async () => {
 
@@ -168,7 +168,7 @@ const userModule = (function () {
      * Checks if user data is in session storage
      * @returns {boolean}
      */
-    obj.checkUserData = () => {
+    obj.checkUserData = function () {
 
         let data = window.sessionStorage.getItem('oclc_reclamation_user');
 
@@ -185,7 +185,7 @@ const userModule = (function () {
      * @param value
      * @return {boolean/string}
      */
-    const validate = (div_id, value) => {
+    const validate = function (div_id, value) {
         if (value.length === 0) {
             domModule.html(`#${div_id}_error`, '<span style="color: red"><i class="fa fa-exclamation-circle"></i> Please enter a value</span>')
             return false;
@@ -199,7 +199,7 @@ const userModule = (function () {
      * Retrieves user form data
      * @returns {object}
      */
-    const getUserFormData = () => {
+    const getUserFormData = function () {
         return {
             du_id: validate('username', domModule.val('#username', null)),
             email: validate('email', domModule.val('#email', null)),
@@ -211,7 +211,7 @@ const userModule = (function () {
     /**
      * Adds new user
      */
-    obj.addUser = (event) => {
+    obj.addUser = function (event) {
 
         event.preventDefault();
 
@@ -261,7 +261,7 @@ const userModule = (function () {
     /**
      * Updates user data
      */
-    obj.updateUser = (event) => {
+    obj.updateUser = function (event) {
 
         event.preventDefault();
 
@@ -315,7 +315,7 @@ const userModule = (function () {
     /** TODO:
      * Deletes user data
      */
-    obj.deleteUser = () => {
+    obj.deleteUser = function () {
 
         // const endpoints = endpointsModule.endpoints();
         let id = helperModule.getParameterByName('id');

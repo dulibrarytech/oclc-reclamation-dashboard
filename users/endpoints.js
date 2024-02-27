@@ -18,7 +18,8 @@
 
 'use strict';
 
-const PREFIX = '/api/';
+const APP_PATH = '/oclc';
+const PREFIX = APP_PATH + '/api/';
 const VERSION = 'v1';
 const ENDPOINT = '/users';
 const ENDPOINTS = {
@@ -57,6 +58,6 @@ const ENDPOINTS = {
     }
 };
 
-module.exports = () => {
+module.exports = function () {
     return ENDPOINTS;
 };
