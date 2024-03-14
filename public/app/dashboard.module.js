@@ -20,6 +20,7 @@ const dashboardModule = (function () {
 
     'use strict';
 
+    const APP_PATH = '/oclc';
     const api = configModule.getApi();
     const data_table = '#data-table';
     const card_title = '.card-title';
@@ -76,9 +77,9 @@ const dashboardModule = (function () {
                     }
 
                 } else if (response.status === 401) {
-                    window.location.replace('/login');
+                    window.location.replace(APP_PATH + '/login');
                 } else {
-                    window.location.replace('/dashboard/error?status=' + DOMPurify.sanitize(response.status));
+                    window.location.replace(APP_PATH + '/dashboard/error?status=' + DOMPurify.sanitize(response.status));
                 }
 
             })();

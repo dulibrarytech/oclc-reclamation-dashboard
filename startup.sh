@@ -1,1 +1,0 @@
-pm2 start oclc_reclamation_dashboard.js -i 0 --env production --node-args="--max-old-space-size=6096"
