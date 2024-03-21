@@ -23,11 +23,12 @@ const CONFIG = require('../config/webservices_config')();
 const TOKEN = require('../libs/tokens');
 const MODEL = require('../auth/model');
 
-exports.sso = (req, res) => {
+exports.sso = function (req, res) {
 
     const APP_PATH = '/oclc';
     const SSO_HOST = req.body.HTTP_HOST;
     const USERNAME = req.body.employeeID;
+    delete req.body;
 
     if (SSO_HOST === CONFIG.ssoHost && USERNAME !== undefined) {
 
@@ -52,14 +53,14 @@ exports.sso = (req, res) => {
     }
 };
 
-exports.get_auth_user_data = (req, res) => {
+exports.get_auth_user_data = function (req, res) {
     const ID = req.query.id;
     MODEL.get_auth_user_data(ID, (data) => {
         res.status(data.status).send(data.data);
     });
 };
 
-exports.get_dashboard_landing_page = (req, res) => {
+exports.get_dashboard_landing_page = function (req, res) {
     res.render('dashboard-landing', {
         host: APP_CONFIG.host,
         appname: APP_CONFIG.app_name,
