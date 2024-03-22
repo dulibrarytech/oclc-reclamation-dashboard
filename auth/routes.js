@@ -30,9 +30,9 @@ const CORS_OPTIONS = function (req, callback) {
     let cors_options;
 
     if (ALLOW.indexOf(req.header('Origin')) !== -1) {
-        cors_options = { origin: true }
+        cors_options = {origin: true}
     } else {
-        cors_options = { origin: false }
+        cors_options = {origin: false}
     }
 
     callback(null, cors_options)
@@ -44,11 +44,11 @@ module.exports = function (app) {
     .get(CONTROLLER.get_dashboard_landing_page);
 
     app.route(ENDPOINTS().auth.login.endpoint)
-        .get(TOKENS.verify);
+    .get(TOKENS.verify);
 
-    app.route(CORS(CORS_OPTIONS), ENDPOINTS().auth.sso.endpoint)
-        .post(CONTROLLER.sso);
+    app.route(ENDPOINTS().auth.sso.endpoint)
+    .post(CORS(CORS_OPTIONS), CONTROLLER.sso);
 
     app.route(ENDPOINTS().auth.authentication.endpoint)
-        .get(TOKENS.verify, CONTROLLER.get_auth_user_data);
+    .get(TOKENS.verify, CONTROLLER.get_auth_user_data);
 };

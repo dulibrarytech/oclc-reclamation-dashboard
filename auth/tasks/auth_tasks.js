@@ -40,14 +40,14 @@ const Auth_tasks = class {
         let promise = new Promise((resolve, reject) => {
 
             this.DB(this.TABLE)
-                .select('id')
+                .select('id', 'du_id')
                 .where({
                     du_id: username,
                     is_active: 1
                 })
                 .then((data) => {
 
-                    if (data.length === 1) {
+                    if (data.length === 1 && data[0].du_id === username) {
 
                         resolve({
                             auth: true,
@@ -87,7 +87,7 @@ const Auth_tasks = class {
                 })
                 .then((data) => {
 
-                    if (data.length === 1) {
+                    if (data.length === 1 && data[0].id === id) {
 
                         resolve({
                             data: data

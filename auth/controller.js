@@ -28,15 +28,26 @@ exports.sso = function (req, res) {
 
     const APP_PATH = '/oclc';
     const SSO_HOST = req.body.HTTP_HOST;
-    const USERNAME = req.body.employeeID; // TODO: check if digit
+    const USERNAME = req.body.employeeID;
     delete req.body;
 
-    if (!VALIDATOR.isNumeric(USERNAME)) {
+    if (USERNAME === undefined || SSO_HOST === undefined) {
+        res.status(403).send({
+            message: 'You do not have access to this resource.'
+        });
+        return false;
+    }
+
+    if (!VALIDATOR.isNumeric(USERNAME) || !VALIDATOR.isFQDN(SSO_HOST)) {
+
+        res.status(403).send({
+            message: 'You do not have access to this resource.'
+        });
 
         return false;
     }
 
-    if (SSO_HOST === CONFIG.ssoHost && USERNAME !== undefined) {
+    if (SSO_HOST === CONFIG.ssoHost) {
 
         let token = TOKEN.create(USERNAME);
         token = encodeURIComponent(token);

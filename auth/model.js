@@ -42,8 +42,8 @@ exports.check_auth_user = (username, callback) => {
 
             if (data === false) {
                 callback({
-                    status: 422,
-                    message: 'unable to check user auth data'
+                    status: 401,
+                    message: 'Authentication failed'
                 });
             } else {
                 callback(data);
