@@ -106,7 +106,7 @@ const authModule = (function () {
      * @param data
      */
     obj.saveUserAuthData = (data) => {
-        console.log('user data ', data);
+
         let user = {
             uid: DOMPurify.sanitize(data.user_data.data[0].id),
             name: DOMPurify.sanitize(data.user_data.data[0].first_name) + ' ' + DOMPurify.sanitize(data.user_data.data[0].last_name)
