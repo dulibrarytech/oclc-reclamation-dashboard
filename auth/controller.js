@@ -22,13 +22,19 @@ const APP_CONFIG = require('../config/app_config')();
 const CONFIG = require('../config/webservices_config')();
 const TOKEN = require('../libs/tokens');
 const MODEL = require('../auth/model');
+const VALIDATOR = require('validator');
 
 exports.sso = function (req, res) {
 
     const APP_PATH = '/oclc';
     const SSO_HOST = req.body.HTTP_HOST;
-    const USERNAME = req.body.employeeID;
+    const USERNAME = req.body.employeeID; // TODO: check if digit
     delete req.body;
+
+    if (!VALIDATOR.isNumeric(USERNAME)) {
+
+        return false;
+    }
 
     if (SSO_HOST === CONFIG.ssoHost && USERNAME !== undefined) {
 
