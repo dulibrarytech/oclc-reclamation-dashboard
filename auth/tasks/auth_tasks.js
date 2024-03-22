@@ -87,7 +87,7 @@ const Auth_tasks = class {
                 })
                 .then((data) => {
 
-                    if (data.length === 1 && data[0].id === id) {
+                    if (data.length === 1 && data[0].id === parseInt(id)) {
 
                         resolve({
                             data: data

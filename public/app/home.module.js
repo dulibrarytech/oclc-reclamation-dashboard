@@ -31,7 +31,6 @@ const homeModule = (function () {
 
         history.replaceState({}, '', APP_PATH + '/dashboard/home');
         history.pushState({}, '', APP_PATH + '/dashboard/home');
-
         domModule.html('#message', '<div class="alert alert-info">Loading Dashboard...</div>');
 
         setTimeout(() => {

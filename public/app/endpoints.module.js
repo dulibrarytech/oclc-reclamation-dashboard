@@ -24,7 +24,6 @@ const endpointsModule = (function () {
     let obj = {};
 
     obj.save_oclc_reclamation_endpoints = (data) => {
-        console.log(data);
         window.localStorage.setItem('oclc_reclamation_endpoints_users', JSON.stringify(data.endpoints.users));
         window.localStorage.setItem('oclc_reclamation_endpoints_app', JSON.stringify(data.endpoints.app));
     };

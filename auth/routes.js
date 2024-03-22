@@ -50,5 +50,5 @@ module.exports = function (app) {
     .post(CORS(CORS_OPTIONS), CONTROLLER.sso);
 
     app.route(ENDPOINTS().auth.authentication.endpoint)
-    .get(TOKENS.verify, CONTROLLER.get_auth_user_data);
+    .get(CORS(CORS_OPTIONS), TOKENS.verify, CONTROLLER.get_auth_user_data);
 };

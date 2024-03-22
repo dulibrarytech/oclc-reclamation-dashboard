@@ -1,6 +1,6 @@
 {
   "name": "oclc-reclamation-dashboard",
-  "version": "0.5.0",
+  "version": "0.8.0",
   "description": "OCLC Reclamation Dashboard",
   "main": "oclc_reclamation_dashboard.js",
   "scripts": {
