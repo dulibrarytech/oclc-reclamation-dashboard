@@ -27,6 +27,7 @@ const VALIDATOR = require('validator');
 exports.sso = function (req, res) {
 
     if (req.body.employeeID === undefined || req.body.HTTP_HOST === undefined) {
+
         res.status(403).send({
             message: 'You do not have access to this resource.'
         });
@@ -64,7 +65,7 @@ exports.sso = function (req, res) {
         MODEL.check_auth_user(USERNAME, (result) => {
 
             if (result.auth === true) {
-                res.redirect(APP_PATH + '/dashboard/home?t=' + token + '&id=' + result.data);
+                res.redirect(APP_PATH + '/dashboard/home?t=' + token + '&id=' + parseInt(result.data));
             } else {
                 res.status(403).send({
                     message: 'You do not have access to this resource.'
