@@ -26,10 +26,6 @@ const userModule = (function () {
     const users_table = '#users-data-table';
     let obj = {};
 
-    /**
-     * Renders user profile data
-     * @param data
-     */
     const renderUsers = function (data) {
 
         let users = '';
@@ -81,10 +77,6 @@ const userModule = (function () {
         return false;
     };
 
-    /**
-     * Renders user profile data for edit form
-     * @param data
-     */
     const renderUserDetails = function (data) {
 
         let user;
@@ -109,9 +101,6 @@ const userModule = (function () {
         return false;
     };
 
-    /**
-     * Gets all users
-     */
     obj.getUsers = function () {
 
         (async () => {
@@ -136,9 +125,6 @@ const userModule = (function () {
         })();
     };
 
-    /**
-     * Retrieves user profile data for edit form
-     */
     obj.getUserDetails = function () {
 
         (async () => {
@@ -164,10 +150,6 @@ const userModule = (function () {
         })();
     };
 
-    /**
-     * Checks if user data is in session storage
-     * @returns {boolean}
-     */
     obj.checkUserData = function () {
 
         let data = window.sessionStorage.getItem('oclc_reclamation_user');
@@ -179,12 +161,6 @@ const userModule = (function () {
         return false;
     };
 
-    /**
-     * Validate user form fields
-     * @param div_id
-     * @param value
-     * @return {boolean/string}
-     */
     const validate = function (div_id, value) {
         if (value.length === 0) {
             domModule.html(`#${div_id}_error`, '<span style="color: red"><i class="fa fa-exclamation-circle"></i> Please enter a value</span>')
@@ -195,10 +171,6 @@ const userModule = (function () {
         }
     };
 
-    /**
-     * Retrieves user form data
-     * @returns {object}
-     */
     const getUserFormData = function () {
         return {
             du_id: validate('username', domModule.val('#username', null)),
@@ -208,9 +180,6 @@ const userModule = (function () {
         };
     };
 
-    /**
-     * Adds new user
-     */
     obj.addUser = function (event) {
 
         event.preventDefault();
@@ -258,9 +227,6 @@ const userModule = (function () {
         return false;
     };
 
-    /**
-     * Updates user data
-     */
     obj.updateUser = function (event) {
 
         event.preventDefault();
@@ -312,9 +278,6 @@ const userModule = (function () {
         })();
     };
 
-    /** TODO:
-     * Deletes user data
-     */
     obj.deleteUser = function () {
 
         // const endpoints = endpointsModule.endpoints();

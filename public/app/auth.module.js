@@ -25,10 +25,6 @@ const authModule = (function () {
     const init_endpoints = endpointsModule.init();
     let obj = {};
 
-    /**
-     * Gets token from session storage
-     * @returns token
-     */
     obj.getUserToken = () => {
 
         let data = JSON.parse(window.sessionStorage.getItem('oclc_reclamation_token'));
@@ -46,9 +42,6 @@ const authModule = (function () {
         }
     };
 
-    /**
-     * Gets user profile data after authentication
-     */
     obj.getAuthUserData = () => {
 
         let id = helperModule.getParameterByName('id');
@@ -88,9 +81,6 @@ const authModule = (function () {
         }
     };
 
-    /**
-     * Checks if user data is in session storage
-     */
     obj.checkUserAuthData = () => {
         let data = window.sessionStorage.getItem('oclc_reclamation_user');
 
@@ -101,10 +91,6 @@ const authModule = (function () {
         return false;
     };
 
-    /**
-     * Saves user profile data to session storage
-     * @param data
-     */
     obj.saveUserAuthData = (data) => {
 
         let user = {
@@ -116,9 +102,6 @@ const authModule = (function () {
         window.sessionStorage.setItem('oclc_reclamation_user', JSON.stringify(user));
     };
 
-    /**
-     * Gets session token from URL params
-     */
     obj.saveToken = () => {
 
         let token = helperModule.getParameterByName('t');

@@ -22,10 +22,6 @@ const configModule = (function () {
 
     let obj = {};
 
-    /**
-     * Resolves dashboard url
-     * @returns string api
-     */
     obj.getApi = () => {
 
         let api = 'http://localhost';

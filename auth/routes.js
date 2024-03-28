@@ -49,6 +49,9 @@ module.exports = function (app) {
     app.route(ENDPOINTS().auth.sso.endpoint)
     .post(CORS(CORS_OPTIONS), CONTROLLER.sso);
 
+    app.route(ENDPOINTS().auth.sso.endpoint)
+    .get(CORS(CORS_OPTIONS), CONTROLLER.sso);
+
     app.route(ENDPOINTS().auth.authentication.endpoint)
-    .get(CORS(CORS_OPTIONS), TOKENS.verify, CONTROLLER.get_auth_user_data);
+    .get(TOKENS.verify, CORS(CORS_OPTIONS), CONTROLLER.get_auth_user_data);
 };

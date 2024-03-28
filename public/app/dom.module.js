@@ -22,12 +22,6 @@ const domModule = (function () {
 
     let obj = {};
 
-    /**
-     * Injects data into DOM via id or class
-     * @param selector
-     * @param data
-     * @returns {boolean}
-     */
     obj.html = function(selector, data) {
 
         let result = true;
@@ -64,12 +58,6 @@ const domModule = (function () {
         return result;
     };
 
-    /**
-     * Gets or sets form field data
-     * @param selector
-     * @param data
-     * @returns {*}
-     */
     obj.val = function(selector, data) {
 
         let result = true;
@@ -92,11 +80,6 @@ const domModule = (function () {
         return result;
     };
 
-    /**
-     * Gets form field data
-     * @param selector
-     * @returns {string}
-     */
     obj.serialize = function(selector) {
 
         let vals = [];
@@ -112,10 +95,6 @@ const domModule = (function () {
         return vals.join('&');
     };
 
-    /**
-     * Hides element
-     * @param selector
-     */
     obj.hide = function(selector) {
 
         let result = true;
@@ -148,10 +127,6 @@ const domModule = (function () {
         return result;
     };
 
-    /**
-     * Shows element
-     * @param selector
-     */
     obj.show = function(selector) {
 
         let result = true;
@@ -184,11 +159,6 @@ const domModule = (function () {
         return result;
     };
 
-    /**
-     * Empties contents of element
-     * @param selector
-     * @returns {boolean}
-     */
     obj.empty = function(selector) {
 
         let elem = document.querySelector(selector);
@@ -200,21 +170,11 @@ const domModule = (function () {
         return true;
     };
 
-    /**
-     * Changes element id value
-     * @param currentId
-     * @param newId
-     */
     obj.id = function(currentId, newId) {
         let elem = document.getElementById(currentId);
         elem.id = newId;
     };
 
-    /**
-     * Gets element reference by selector
-     * @param selector
-     * @returns {Element}
-     */
     obj.getElement = function(selector) {
         return document.querySelector(selector);
     };

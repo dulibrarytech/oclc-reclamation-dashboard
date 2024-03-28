@@ -26,9 +26,6 @@ const dashboardModule = (function () {
     const card_title = '.card-title';
     let obj = {};
 
-    /**
-     * Gets record stats
-     */
     obj.get_stats = () => {
 
         const endpoints = endpointsModule.get_application_endpoints();
@@ -86,9 +83,6 @@ const dashboardModule = (function () {
         });
     };
 
-    /**
-     * Gets records that are unset WorldCat
-     */
     obj.get_unset_records = () => {
 
         const endpoints = endpointsModule.get_application_endpoints();
@@ -143,9 +137,6 @@ const dashboardModule = (function () {
         });
     };
 
-    /**
-     * Gets records that are set in WorldCat
-     */
     obj.get_set_records = () => {
 
         const endpoints = endpointsModule.get_application_endpoints();
@@ -184,9 +175,6 @@ const dashboardModule = (function () {
         });
     };
 
-    /**
-     * Gets records that do contain OCLC numbers or ISBNs
-     */
     obj.get_null_records = () => {
 
         const endpoints = endpointsModule.get_application_endpoints();

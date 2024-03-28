@@ -23,9 +23,6 @@ const helperModule = (function () {
     const APP_PATH = '/oclc';
     let obj = {};
 
-    /**
-     * Renders error message
-     */
     obj.renderError = function () {
         let error = helperModule.getParameterByName('e');
         let auth_url = configModule.getApi() + APP_PATH + '/login';
@@ -34,12 +31,6 @@ const helperModule = (function () {
         history.pushState({}, '', APP_PATH + '/dashboard/error');
     };
 
-    /**
-     * Gets url parameter
-     * @param name
-     * @param url
-     * @returns {*}
-     */
     obj.getParameterByName = (name, url) => {
 
         if (!url) {
