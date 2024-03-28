@@ -19,6 +19,7 @@
 'use strict';
 
 const MODEL = require('../users/model');
+const VALIDATOR = require("validator");
 
 /**
  * Gets Users
@@ -29,7 +30,17 @@ exports.get_users = (req, res) => {
 
     if (req.query.id !== undefined && req.query.id.length !== 0) {
 
-        let id = req.query.id;
+        if (!VALIDATOR.isNumeric(req.query.id)) {
+
+            res.status(400).send({
+                message: 'Bad Request.'
+            });
+
+            return false;
+        }
+
+        let id = parseInt(req.query.id);
+        delete req.query;
 
         MODEL.get_user(id, (data) => {
             res.status(data.status).send(data.data);
@@ -50,6 +61,17 @@ exports.get_users = (req, res) => {
  */
 exports.save_user = (req, res) => {
 
+    const result = validate(req.body, 'save');
+
+    if (result === false) {
+
+        res.status(400).send({
+            message: 'Bad Request.'
+        });
+
+        return false;
+    }
+
     let user = req.body;
 
     MODEL.save_user(user, (data) => {
@@ -58,14 +80,76 @@ exports.save_user = (req, res) => {
 };
 
 /**
+ * Validates input
+ * @param data
+ * @param type (create, update)
+ * @return {boolean}
+ */
+function validate (data, type) {
+
+    let errors = [];
+
+    if (type === 'update') {
+
+        if (!VALIDATOR.isNumeric(data.id) || data.id.length > 20) {
+            errors.push(-1);
+            return false;
+        }
+
+        if (typeof data.is_active !== 'number' || data.is_active.length > 1) {
+            errors.push(-1);
+            return false;
+        }
+    }
+
+    if (!VALIDATOR.isNumeric(data.du_id) || data.du_id.length > 10) {
+        errors.push(-1);
+        return false;
+    }
+
+    if (!VALIDATOR.isEmail(data.email) || data.email.length > 100) {
+        errors.push(-1);
+        return false;
+    } else if (!/@du.edu\s*$/.test(data.email)) {
+        errors.push(-1);
+        return false;
+    }
+
+    if (!VALIDATOR.isAlpha(data.first_name) || !VALIDATOR.isAlpha(data.last_name)) {
+        errors.push(-1);
+        return false;
+    }
+    console.log(errors);
+    if (errors.length > 0) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * Updates user
  * @param req
  * @param res
  */
 exports.update_user = (req, res) => {
 
+    const result = validate(req.body, 'update')
+
+    if (result === false) {
+
+        res.status(400).send({
+            message: 'Bad Request.'
+        });
+
+        return false;
+    }
+
     let user = req.body;
-    let id = user.id;
+        user.email = user.email.toLocaleLowerCase();
+
+    const id = parseInt(user.id);
+    delete req.body;
     delete user.id;
 
     MODEL.update_user(id, user, (data) => {

@@ -26,26 +26,35 @@ const VALIDATOR = require('validator');
 
 exports.sso = function (req, res) {
 
+    if (req.body.employeeID === undefined || req.body.HTTP_HOST === undefined) {
+        res.status(403).send({
+            message: 'You do not have access to this resource.'
+        });
+        return false;
+    }
+
+    if (!VALIDATOR.isNumeric(req.body.employeeID) || !VALIDATOR.isFQDN(req.body.HTTP_HOST)) {
+
+        res.status(403).send({
+            message: 'You do not have access to this resource.'
+        });
+
+        return false;
+    }
+
+    if (req.body.employeeID.length > 10) {
+
+        res.status(400).send({
+            message: 'Bad Request.'
+        });
+
+        return false;
+    }
+
     const APP_PATH = '/oclc';
-    const SSO_HOST = req.body.HTTP_HOST;
     const USERNAME = req.body.employeeID;
+    const SSO_HOST = req.body.HTTP_HOST;
     delete req.body;
-
-    if (USERNAME === undefined || SSO_HOST === undefined) {
-        res.status(403).send({
-            message: 'You do not have access to this resource.'
-        });
-        return false;
-    }
-
-    if (!VALIDATOR.isNumeric(USERNAME) || !VALIDATOR.isFQDN(SSO_HOST)) {
-
-        res.status(403).send({
-            message: 'You do not have access to this resource.'
-        });
-
-        return false;
-    }
 
     if (SSO_HOST === CONFIG.ssoHost) {
 
@@ -71,8 +80,20 @@ exports.sso = function (req, res) {
 };
 
 exports.get_auth_user_data = function (req, res) {
-    const ID = req.query.id;
-    MODEL.get_auth_user_data(ID, (data) => {
+
+    if (req.query.id === undefined || !VALIDATOR.isNumeric(req.query.id)) {
+
+        res.status(400).send({
+            message: 'Bad Request.'
+        });
+
+        return false;
+    }
+
+    const id = parseInt(req.query.id);
+    delete req.query;
+
+    MODEL.get_auth_user_data(id, (data) => {
         res.status(data.status).send(data.data);
     });
 };
